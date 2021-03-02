@@ -1,0 +1,88 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        style="@style/vertical_layout_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="251dp"
+        tools:layout_editor_absoluteY="411dp">
+
+        <TextView
+            style="@style/text_view_style"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Inscription" />
+
+        <EditText
+            style="@style/edit_text_style"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="24dp"
+            android:id="@+id/Lastname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/Nom" />
+
+        <EditText
+            style="@style/edit_text_style"
+            android:id="@+id/Firstname"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/Prenom" />
+
+        <EditText
+            style="@style/edit_text_style"
+            android:id="@+id/Username"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/username" />
+
+
+        <EditText
+            style="@style/edit_text_style"
+            android:id="@+id/Password"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberPassword"
+            android:hint="@string/password" />
+
+        <Button
+            style="@style/button_style"
+            android:id="@+id/Inscription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Inscription"
+            app:backgroundTint="@color/rouge"/>
+
+        <Button
+            style="@style/button_style"
+            android:id="@+id/Connexion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Identification"
+            app:backgroundTint="@color/rouge"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
