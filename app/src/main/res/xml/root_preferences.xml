@@ -1,0 +1,123 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/sync_edt_header">
+
+        <!-- USED TO LAUNCH THE QR CODE SCAN -->
+        <Preference
+            app:key="scan"
+            app:title="@string/edt_scan_title"
+            app:summary="@string/edt_scan_summary"
+            app:icon="@drawable/scan">
+            <intent
+                android:targetPackage="com.example.projetedtmail"
+                android:targetClass="com.example.projetedtmail.ScanQrCodeActivity"/>
+        </Preference>
+
+        <EditTextPreference
+            app:key="url"
+            app:title="@string/url_edt_title"
+            app:summary="@string/url_edt_summary"
+            app:icon="@drawable/url"/>
+
+        <SwitchPreferenceCompat
+            app:key="sync_edt"
+            app:title="@string/sync_edt_title"
+            app:summary="@string/sync_edt_summary"
+            app:icon="@drawable/sync"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_mail_header">
+
+        <EditTextPreference
+            app:key="addr"
+            app:title="@string/addr_mail_title"
+            app:summary="@string/addr_mail_summary"
+            app:icon="@drawable/mail"/>
+
+        <SwitchPreferenceCompat
+            app:key="sync_mail"
+            app:title="@string/sync_mail_title"
+            app:summary="@string/sync_mail_summary"
+            app:icon="@drawable/sync"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/edt_style_header">
+
+        <CheckBoxPreference
+            app:key="custom_color"
+            app:title="@string/edt_custom_color_title"
+            app:summary="@string/edt_custom_color_summary"
+            app:icon="@drawable/custom_color"/>
+
+        <ListPreference
+            app:key="color"
+            app:title="@string/edt_color_picker_title"
+            app:summary="@string/edt_color_picker_summary"
+            app:dependency="custom_color"
+
+            app:entries="@array/background_color_names_array"
+            app:entryValues="@array/background_color_values_array"
+            app:defaultValue="#DC143C"
+            app:icon="@drawable/color"  />
+
+
+        <CheckBoxPreference
+            app:key="return_button"
+            app:title="@string/edt_return_button_title"
+            app:summary="@string/edt_return_button_summary"
+            app:icon="@drawable/back"/>
+
+        <SeekBarPreference
+            app:key="opacity"
+            app:title="@string/edt_button_opacity_title"
+            app:dependency="return_button"
+            app:defaultValue="100"
+            app:icon="@drawable/opacity"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/edt_management_header">
+
+        <SwitchPreferenceCompat
+            app:key="filter"
+            app:title="@string/edt_event_filter_title"
+            app:summary="@string/edt_event_filter_summary"
+            app:icon="@drawable/list" />
+
+        <!-- USED TO LAUNCH THE LIST_ACTIVITY SCREEN -->
+        <Preference
+            app:key="list"
+            app:title="@string/edt_filtered_event_management_title"
+            app:summary="@string/edt_filtered_event_management_summary"
+            app:icon="@drawable/hidden">
+            <intent
+                android:targetPackage="com.example.projetedtmail"
+                android:targetClass="com.example.projetedtmail.FilterEventActivity"/>
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/app_preferences_header">
+
+        <ListPreference
+            app:key="language"
+            app:title="@string/app_language_title"
+            app:summary="@string/app_language_summary"
+
+            app:entries="@array/language_names_array"
+            app:entryValues="@array/language_values_array"
+            app:defaultValue="fr"
+            app:icon="@drawable/language"  />
+
+        <SwitchPreferenceCompat
+            app:key="dark_theme"
+            app:title="@string/app_theme_title"
+            app:summary="@string/app_theme_summary"
+            app:icon="@drawable/dark" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
