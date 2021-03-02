@@ -12,7 +12,8 @@
     <string name="edt_style_header">Apparence de l\'EDT</string>
     <string name="edt_management_header">Gestion de l\'EDT</string>
     <string name="app_preferences_header">Paramètres généraux</string>
-
+    <string name="SignUp">Inscription</string>
+    <string name="SignIn">Connexion</string>
     <!-- Sync EDT Preferences -->
     <string name="edt_scan_title">Scan QR code</string>
     <string name="edt_scan_summary">Scanner le QR code de l\'emploi du temps.</string>
@@ -63,5 +64,15 @@
     <!-- Buttons Text -->
     <string name="set">Appliquer</string>
     <string name="cancel">Annuler</string>
-
+    <!-- Strings related to signin and signup -->
+    <string name="username">Pseudo</string>
+    <string name="password">PIN</string>
+    <!-- Strings related to signin -->
+    <string name="Connexion">Connexion</string>
+    <string name="Creation">Création de compte</string>
+    <!-- Strings related to signup -->
+    <string name="Inscription">Inscription</string>
+    <string name="Identification">Identifiez-vous</string>
+    <string name="Nom">Nom</string>
+    <string name="Prenom">Prénom</string>
 </resources>

@@ -17,10 +17,16 @@
         <activity
             android:name=".FilterEventActivity"
             android:label="Liste des événements masqués"/>
-
+        <activity
+            android:name=".SignUp"
+            android:label="@string/SignUp"/>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/activity_settings_title">
+            android:label="@string/activity_settings_title"/>
+
+        <activity
+            android:name=".SignIn"
+            android:label="@string/SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
