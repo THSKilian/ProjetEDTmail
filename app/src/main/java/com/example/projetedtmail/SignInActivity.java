@@ -9,7 +9,7 @@ import android.widget.Button;
 
 
 
-public class SignIn extends AppCompatActivity implements View.OnClickListener{
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
     }
     public void onClick(View btn) {
         if(btn.getId() == R.id.Creation){
-            Intent SignUp = new Intent(this, SignUp.class);
+            Intent SignUp = new Intent(this, SignUpActivity.class);
             startActivity(SignUp);
         }
-
 
     }
 }

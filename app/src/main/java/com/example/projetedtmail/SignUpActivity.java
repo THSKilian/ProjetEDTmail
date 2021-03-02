@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     public void onClick(View btn) {
         if (btn.getId() == R.id.Connexion) {
-            Intent SignIn= new Intent(this, SignIn.class);
+            Intent SignIn= new Intent(this, SignInActivity.class);
             startActivity(SignIn);
         }
 
