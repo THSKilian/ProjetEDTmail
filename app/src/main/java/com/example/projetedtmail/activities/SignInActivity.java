@@ -23,6 +23,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         if(btn.getId() == R.id.Creation){
             Intent SignUp = new Intent(this, SignUpActivity.class);
             startActivity(SignUp);
+            this.finish();
         }
 
     }

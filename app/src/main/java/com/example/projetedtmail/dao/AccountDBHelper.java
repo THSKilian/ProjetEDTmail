@@ -10,22 +10,22 @@ public class AccountDBHelper extends SQLiteOpenHelper {
      */
     private static final String TABLE_USER = "table_user";
 
-    public static final String COLONNE_USERNAME = "username";
-    public static final int COLONNE_USERNAME_ID = 1;
-    public static final String COLONNE_EMAIL = "email";
-    public static final int COLONNE_EMAIL_ID = 2;
-    public static final String COLONNE_PHONE = "phone";
-    public static final int COLONNE_PHONE_ID = 3;
-    public static final String COLONNE_PASSWORD = "password";
-    public static final int COLONNE_PASSWORD_ID = 4;
+    public static final String COLONNE_USERNAME = "USERNAME";
+    public static final int COLONNE_USERNAME_ID = 0;
+    public static final String COLONNE_FIRSTNAME = "FIRSTNAME";
+    public static final int COLONNE_FIRSTNAMEL_ID = 1;
+    public static final String COLONNE_LASTNAME = "LASTNAME";
+    public static final int COLONNE_LASTNAME_ID = 2;
+    public static final String COLONNE_PASSWORD = "PASSWORD";
+    public static final int COLONNE_PASSWORD_ID = 3;
 
     /**
      * La requête de création de la structure de la base de données.
      */
     private static final String REQUETE_CREATION_BD = "create table " + TABLE_USER + " ("
             + COLONNE_USERNAME + " text not null, "
-            + COLONNE_EMAIL + " text not null, "
-            + COLONNE_PHONE + " text not null, "
+            + COLONNE_FIRSTNAME + " text not null, "
+            + COLONNE_LASTNAME + " text not null, "
             + COLONNE_PASSWORD + " text not null " + ");";
 
     /**
