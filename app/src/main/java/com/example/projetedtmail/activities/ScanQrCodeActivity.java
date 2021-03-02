@@ -1,14 +1,16 @@
-package com.example.projetedtmail;
+package com.example.projetedtmail.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class FilterEventActivity extends AppCompatActivity {
+import com.example.projetedtmail.R;
+
+public class ScanQrCodeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter_event);
+        setContentView(R.layout.activity_scan_qr_code);
     }
 }

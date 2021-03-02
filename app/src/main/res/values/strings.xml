@@ -80,4 +80,10 @@
     <string name="Nom">Nom</string>
     <string name="Prenom">Prénom</string>
 
+    <!-- FilterEvent Activity Title -->
+    <string name="filter_event">Liste des événements masqués</string>
+
+    <!-- ScanQrCode Activity Title -->
+    <string name="scan_qr_code">Scan du code QR</string>
+
 </resources>

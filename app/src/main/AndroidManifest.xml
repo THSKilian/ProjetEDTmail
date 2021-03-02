@@ -11,21 +11,23 @@
         android:theme="@style/Theme.ProjetEDTmail">
 
         <activity
-            android:name=".ScanQrCodeActivity"
-            android:label="Scan QR code" />
+            android:name=".activities.ScanQrCodeActivity"
+            android:label="@string/scan_qr_code" />
 
         <activity
-            android:name=".FilterEventActivity"
-            android:label="Liste des événements masqués"/>
+            android:name=".activities.FilterEventActivity"
+            android:label="@string/filter_event"/>
+
         <activity
-            android:name=".SignUp"
+            android:name=".activities.SignUpActivity"
             android:label="@string/SignUp"/>
+
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:label="@string/activity_settings_title"/>
 
         <activity
-            android:name=".SignIn"
+            android:name=".activities.SignInActivity"
             android:label="@string/SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,7 +11,7 @@
             app:icon="@drawable/scan">
             <intent
                 android:targetPackage="com.example.projetedtmail"
-                android:targetClass="com.example.projetedtmail.ScanQrCodeActivity"/>
+                android:targetClass="com.example.projetedtmail.activities.ScanQrCodeActivity"/>
         </Preference>
 
         <EditTextPreference
@@ -95,7 +95,7 @@
             app:icon="@drawable/hidden">
             <intent
                 android:targetPackage="com.example.projetedtmail"
-                android:targetClass="com.example.projetedtmail.FilterEventActivity"/>
+                android:targetClass="com.example.projetedtmail.activities.FilterEventActivity"/>
         </Preference>
 
     </PreferenceCategory>
