@@ -64,11 +64,11 @@ public class UserDAO extends DAOBase {
 
         while (c.moveToNext()) {
             String username = c.getString(0);
-            String email = c.getString(1);
-            String phone = c.getString(2);
+            String firstname = c.getString(1);
+            String lastname = c.getString(2);
             String password = c.getString(3);
 
-            User user = new User(username, email, phone, password);
+            User user = new User(username, firstname, lastname, password);
             userArray.add(user);
         }
 
