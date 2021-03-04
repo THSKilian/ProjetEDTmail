@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetedtmail.R;
@@ -70,6 +71,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 catch (Exception e){
                     e.printStackTrace();
                 }
+                Intent signIn = new Intent(this, SignInActivity.class);
+                startActivity(signIn);
+            }
+            //Message d'erreur si des champs ne sont pas remplis
+else{
+                createDialog("Error", "ATTENTION!! Certains champs sont vides");
             }
         }
 
@@ -79,5 +86,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             this.finish();
         }
     }
+    //Création d'un AlertDialog
+    private void  createDialog(String title, String text){
+        AlertDialog ad = new AlertDialog.Builder(this).setPositiveButton("OK",null).setTitle(title).setMessage(text).create();
+        ad.show();
 
+    }
 }
