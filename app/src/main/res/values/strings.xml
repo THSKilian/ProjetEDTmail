@@ -71,11 +71,11 @@
     <string name="password">PIN</string>
 
     <!-- Strings related to signin -->
-    <string name="Connexion">Connexion</string>
+
     <string name="Creation">Création de compte</string>
 
     <!-- Strings related to signup -->
-    <string name="Inscription">Inscription</string>
+
     <string name="Identification">Identifiez-vous</string>
     <string name="Nom">Nom</string>
     <string name="Prenom">Prénom</string>
@@ -85,5 +85,7 @@
 
     <!-- ScanQrCode Activity Title -->
     <string name="scan_qr_code">Scan du code QR</string>
+    <!-- Calendar Activity Title -->
+    <string name="calendar_view_activity_title">Calendrier</string>
 
 </resources>
