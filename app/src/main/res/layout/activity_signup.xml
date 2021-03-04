@@ -17,7 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Inscription" />
+            android:text="@string/SignUp" />
 
         <EditText
             style="@style/edit_text_style"
@@ -73,7 +73,7 @@
             android:id="@+id/Inscription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Inscription"
+            android:text="@string/SignUp"
             app:backgroundTint="@color/rouge"/>
 
         <Button

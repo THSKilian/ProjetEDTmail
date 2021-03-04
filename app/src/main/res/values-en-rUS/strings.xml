@@ -37,13 +37,13 @@
     <string name="edt_custom_color_title">Personalized colors</string>
     <string name="edt_custom_color_summary">Personalize the events\'s colors</string>
     <string name="edt_color_picker_title">Events\'s background color</string>
-    <string name="edt_color_picker_summary">Choose the events\'s backgroud color</string>
+    <string name="edt_color_picker_summary">Choose the events\'s background color</string>
     <string name="edt_return_button_title">Button return</string>
     <string name="edt_return_button_summary">Show the button permit to return at today\'s day in the schedule</string>
     <string name="edt_button_opacity_title">Opacity of button return</string>
     <string name="edt_event_filter_title">Events\'s filter</string>
     <string name="edt_filtered_event_management_title">List of hidden events</string>
-    <string name="edt_event_filter_summary">Hide the events presetn in the list of hidden events</string>
+    <string name="edt_event_filter_summary">Hide the events present in the list of hidden events</string>
     <string name="filter_event">List of hidden events</string>
     <string name="app_theme_summary">Display the application in its theme</string>
     <string name="edt_filtered_event_management_summary">Manage the hidden events. Delete an event from the list will make it appear again in the schedule</string>
