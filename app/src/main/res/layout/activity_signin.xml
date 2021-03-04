@@ -17,7 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignIn" />
+            android:text="@string/signin" />
 
         <EditText
             style="@style/edit_text_style"
@@ -49,7 +49,7 @@
             android:id="@+id/Connexion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignIn"
+            android:text="@string/signin"
             app:backgroundTint="@color/rouge"
             />
         <Button
@@ -57,7 +57,7 @@
             android:id="@+id/Creation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Creation"
+            android:text="@string/creation"
             app:backgroundTint="@color/rouge"
             />
     </LinearLayout>

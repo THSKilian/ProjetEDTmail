@@ -61,10 +61,10 @@
     <!-- END OF SETTINGS ACTIVITY STRINGS -->
 
     <!-- SignIn Activity Title -->
-    <string name="SignIn">Connexion</string>
+    <string name="signin">Connexion</string>
 
     <!-- SignUp Activity Title -->
-    <string name="SignUp">Inscription</string>
+    <string name="signup">Inscription</string>
 
     <!-- Strings related to signin and signup -->
     <string name="username">Pseudo</string>
@@ -72,13 +72,13 @@
 
     <!-- Strings related to signin -->
 
-    <string name="Creation">Création de compte</string>
+    <string name="creation">Création de compte</string>
 
     <!-- Strings related to signup -->
 
-    <string name="Identification">Identifiez-vous</string>
-    <string name="Nom">Nom</string>
-    <string name="Prenom">Prénom</string>
+    <string name="identification">Identifiez-vous</string>
+    <string name="lastname">Nom</string>
+    <string name="firstname">Prénom</string>
 
     <!-- FilterEvent Activity Title -->
     <string name="filter_event">Liste des événements masqués</string>
