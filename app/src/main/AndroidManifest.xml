@@ -21,13 +21,13 @@
             android:label="@string/filter_event" />
         <activity
             android:name=".activities.SignUpActivity"
-            android:label="@string/SignUp" />
+            android:label="@string/signup" />
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/activity_settings_title" />
         <activity
             android:name=".activities.SignInActivity"
-            android:label="@string/SignIn">
+            android:label="@string/signin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

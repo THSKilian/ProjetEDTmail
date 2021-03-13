@@ -17,7 +17,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp" />
+            android:text="@string/signup" />
 
         <EditText
             style="@style/edit_text_style"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Nom" />
+            android:hint="@string/lastname" />
 
         <EditText
             style="@style/edit_text_style"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Prenom" />
+            android:hint="@string/firstname" />
 
         <EditText
             style="@style/edit_text_style"
@@ -73,7 +73,7 @@
             android:id="@+id/Inscription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp"
+            android:text="@string/signup"
             app:backgroundTint="@color/rouge"/>
 
         <Button
@@ -81,7 +81,7 @@
             android:id="@+id/Connexion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Identification"
+            android:text="@string/identification"
             app:backgroundTint="@color/rouge"/>
 
     </LinearLayout>

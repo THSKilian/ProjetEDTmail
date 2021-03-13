@@ -42,6 +42,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         userDAO = new UserDAO(this);
         userDAO.open();
     }
+
     public void onClick(View btn) {
 
         // Gestion du clique sur le bouton de création de compte
