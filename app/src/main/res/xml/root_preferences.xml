@@ -116,7 +116,8 @@
             app:key="dark_theme"
             app:title="@string/app_theme_title"
             app:summary="@string/app_theme_summary"
-            app:icon="@drawable/dark" />
+            app:icon="@drawable/dark"
+            />
 
     </PreferenceCategory>
 
