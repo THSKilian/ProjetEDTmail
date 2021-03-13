@@ -9,9 +9,6 @@
             app:title="@string/edt_scan_title"
             app:summary="@string/edt_scan_summary"
             app:icon="@drawable/scan">
-            <intent
-                android:targetPackage="com.example.projetedtmail"
-                android:targetClass="com.example.projetedtmail.activities.ScanQrCodeActivity"/>
         </Preference>
 
         <EditTextPreference

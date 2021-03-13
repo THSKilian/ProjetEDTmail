@@ -2,7 +2,6 @@ package com.example.projetedtmail.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetedtmail.R;
-import com.example.projetedtmail.activities.SignInActivity;
 import com.example.projetedtmail.beans.User;
 import com.example.projetedtmail.dao.UserDAO;
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projetedtmail">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
         android:allowBackup="true"
@@ -10,12 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetEDTmail">
 
+        <activity android:name=".activities.ScanActivity"></activity>
         <activity
             android:name=".activities.CalendarViewActivity"
-            android:label="@string/calendar_view_activity_title" />
-        <activity
-            android:name=".activities.ScanQrCodeActivity"
-            android:label="@string/scan_qr_code" />
+            android:label="@string/calendar_view_activity_title"></activity>
         <activity
             android:name=".activities.FilterEventActivity"
             android:label="@string/filter_event" />
@@ -24,16 +25,16 @@
             android:label="@string/signup" />
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/activity_settings_title" />
-        <activity
-            android:name=".activities.SignInActivity"
-            android:label="@string/signin">
+            android:label="@string/activity_settings_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.SignInActivity"
+            android:label="@string/signin"></activity>
     </application>
 
 </manifest>
