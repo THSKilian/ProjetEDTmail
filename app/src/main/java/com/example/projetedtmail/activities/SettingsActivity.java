@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -25,12 +26,11 @@ import java.util.Collections;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public EditTextPreference url;
-
+    public static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        context = this;
         setContentView(R.layout.settings_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -64,10 +64,10 @@ public class SettingsActivity extends AppCompatActivity {
             editor.apply();
 
             // on modifie le champs des paramètres pour afficher la nouvelle valeur de l'URL scannée
-            url.setText(intentResult.getContents());
+            SettingsFragment.url.setText(intentResult.getContents());
 
             // on notifie l'utilisateur que l'URL a bien été scannée à l'aide d'un AlertDialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Result");
             builder.setMessage(intentResult.getContents());
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
@@ -79,7 +79,9 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
+    public static class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
+
+        public static EditTextPreference url;
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -93,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
         // gestion du click sur l'onglet Scan QR code des paramètres
         @Override
         public boolean onPreferenceClick(Preference preference) {
-            IntentIntegrator intentIntegrator = new IntentIntegrator(SettingsActivity.this);
+            IntentIntegrator intentIntegrator = new IntentIntegrator((Activity) SettingsActivity.context);
             intentIntegrator.setPrompt("Scannez le QR code");
             intentIntegrator.setBeepEnabled(false);
             intentIntegrator.setOrientationLocked(false);
