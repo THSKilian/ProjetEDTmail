@@ -25,13 +25,12 @@ import java.util.Collections;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public static Context context;
-    public static EditTextPreference url;
+    public EditTextPreference url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = this;
+
         setContentView(R.layout.settings_activity);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -48,31 +47,31 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // récupération de la valeur du résultat du scan
         IntentResult intentResult = IntentIntegrator.parseActivityResult(
                 requestCode,resultCode,data
         );
+
+        // si le résultat est bien différent de null
         if(intentResult.getContents() != null){
 
+            // on le stock dans les sharedPreferences
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("url", intentResult.getContents());
             editor.apply();
 
+            // on modifie le champs des paramètres pour afficher la nouvelle valeur de l'URL scannée
             url.setText(intentResult.getContents());
 
-            if(sharedPreferences.contains("url")){
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Result");
-                builder.setMessage(intentResult.getContents());
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.show();
-            }
+            // on notifie l'utilisateur que l'URL a bien été scannée à l'aide d'un AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+            builder.setTitle("Result");
+            builder.setMessage(intentResult.getContents());
+            builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+            builder.show();
         }
         else{
             //TODO
@@ -80,7 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
+    public class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -89,17 +88,17 @@ public class SettingsActivity extends AppCompatActivity {
             scanQrCode.setOnPreferenceClickListener(this);
 
             url = this.findPreference("url");
-
         }
 
+        // gestion du click sur l'onglet Scan QR code des paramètres
         @Override
         public boolean onPreferenceClick(Preference preference) {
-           IntentIntegrator intentIntegrator = new IntentIntegrator((Activity) context);
-           intentIntegrator.setPrompt("Scannez le QR code");
-           intentIntegrator.setBeepEnabled(false);
-           intentIntegrator.setOrientationLocked(false);
-           intentIntegrator.setCaptureActivity(ScanActivity.class);
-           intentIntegrator.initiateScan();
+            IntentIntegrator intentIntegrator = new IntentIntegrator(SettingsActivity.this);
+            intentIntegrator.setPrompt("Scannez le QR code");
+            intentIntegrator.setBeepEnabled(false);
+            intentIntegrator.setOrientationLocked(false);
+            intentIntegrator.setCaptureActivity(ScanActivity.class);
+            intentIntegrator.initiateScan();
             return true;
         }
     }
