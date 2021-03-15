@@ -65,7 +65,6 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
 
     /*
     TODO :
-        - gérer le format de la date en fonction de la langue
         - faire en sorte de pouvoir sync avec un appuie sur le bouton Synchroniser de la barre d'outils JAJA
         - faire en sorte de paramétrer l'activité à l'aide des sharedPreferences
         - faire la gestion des paramètres (appuie et changement des valeurs) JAJA
