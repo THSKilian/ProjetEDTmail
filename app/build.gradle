@@ -2,9 +2,23 @@ plugins {
     id 'com.android.application'
 }
 
+configurations {
+    // referenced in some portable lib. use android internal instead
+    compile.exclude group: 'commons-logging'
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+
+    packagingOptions {
+        // prevent duplicate files
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+
+        //!!! andoird buildToolsVersion 19.0.3 does not support exclude with wildcards yet :-(
+        exclude('org/apache/commons/codec/language/bm/*.txt')       //  124 files (uncompressed 215kb) with unused language specific rules
+    }
 
     defaultConfig {
         applicationId "com.example.projetedtmail"
@@ -25,22 +39,31 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-
     }
 }
 
 dependencies {
+
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
-
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.zxing:core:3.3.0'
+
+    implementation 'org.mnode.ical4j:ical4j:1.0.5'
+    implementation 'backport-util-concurrent:backport-util-concurrent:3.1'
+    implementation 'commons-codec:commons-codec:1.10'
+    implementation 'commons-lang:commons-lang:2.6'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    implementation "commons-logging:commons-logging-api:1.1"
     implementation 'com.android.support:appcompat-v7:30.0.0'
 
 }

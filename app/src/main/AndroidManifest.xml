@@ -5,15 +5,30 @@
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProjetEDTmail">
+        android:theme="@style/Theme.ProjetEDTmail"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
 
-        <activity android:name=".activities.ScanActivity"></activity>
+        <activity android:name=".activities.ScanActivity" />
+
+        <activity
+            android:name=".activities.CalendarViewActivity"
+            android:label="@string/calendar_view_activity_title"></activity>
         <activity
             android:name=".activities.FilterEventActivity"
             android:label="@string/filter_event" />
@@ -33,9 +48,6 @@
             android:name=".activities.SettingsActivity"
             android:label="@string/calendar_view_activity_title">
     </activity>
-        <activity
-            android:name=".activities.CalendarViewActivity"
-            android:label="@string/calendar_view_activity_title"></activity>
     </application>
 
 </manifest>

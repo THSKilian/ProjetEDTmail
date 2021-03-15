@@ -3,6 +3,7 @@ package com.example.projetedtmail.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,8 +18,6 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
-import androidx.preference.SwitchPreferenceCompat;
 
 import com.example.projetedtmail.R;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -27,7 +26,6 @@ import com.google.zxing.integration.android.IntentResult;
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +51,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         // récupération de la valeur du résultat du scan
         IntentResult intentResult = IntentIntegrator.parseActivityResult(
-                requestCode, resultCode, data
+                requestCode,resultCode,data
         );
 
         // si le résultat est bien différent de null
-        if (intentResult.getContents() != null) {
+        if(intentResult.getContents() != null){
 
             // on le stock dans les sharedPreferences
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -75,7 +73,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             builder.setMessage(intentResult.getContents());
             builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
             builder.show();
-        } else {
+        }
+        else{
             //TODO
             //GERER UNE EVENTUELLE ERREUR
         }
@@ -90,7 +89,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     public static class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener{
 
         public static EditTextPreference url;
-
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -138,6 +136,5 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             return true;
         }
     }
+
 }
-
-
