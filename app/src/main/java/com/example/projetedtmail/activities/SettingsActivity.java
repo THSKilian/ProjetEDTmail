@@ -3,12 +3,9 @@ package com.example.projetedtmail.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -21,8 +18,6 @@ import androidx.preference.PreferenceManager;
 import com.example.projetedtmail.R;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import java.util.Collections;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -86,10 +81,11 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
+            url = this.findPreference("url");
+
             Preference scanQrCode = this.findPreference("scan");
             scanQrCode.setOnPreferenceClickListener(this);
 
-            url = this.findPreference("url");
         }
 
         // gestion du click sur l'onglet Scan QR code des paramètres
@@ -98,11 +94,12 @@ public class SettingsActivity extends AppCompatActivity {
             IntentIntegrator intentIntegrator = new IntentIntegrator((Activity) SettingsActivity.context);
             intentIntegrator.setPrompt("Scannez le QR code");
             intentIntegrator.setBeepEnabled(false);
-            intentIntegrator.setOrientationLocked(false);
+            intentIntegrator.setOrientationLocked(true);
             intentIntegrator.setCaptureActivity(ScanActivity.class);
             intentIntegrator.initiateScan();
             return true;
         }
+
     }
 
 }
