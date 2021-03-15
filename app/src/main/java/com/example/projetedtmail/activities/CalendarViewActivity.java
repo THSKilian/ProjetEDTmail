@@ -55,7 +55,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CalendarViewActivity extends AppCompatActivity implements View.OnClickListener{
+public class CalendarViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ListView listView;
     private TextView textView;
@@ -107,7 +107,29 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
             editor.putBoolean("dark_theme", false);
 
         }
+        Boolean sync_edt = sharedPreferences.getBoolean("sync_edt", false);
+        String langue = sharedPreferences.getString("language", "fr");
+        String url = sharedPreferences.getString("url", null);
+        returnButton = sharedPreferences.getBoolean("return_button", false);
 
+        // si la synchro au démarrage est activée
+        if (sync_edt) {
+            // réucpérer le fichier ICS depuis l'url scannée ou saisie
+            downloadCalendar(url);
+        }
+
+        switch (langue) {
+            case "fr":
+                formatHeureMinute = new SimpleDateFormat("HH:mm", Locale.FRANCE);
+                formatDate = new SimpleDateFormat("EEEE dd MMMM", Locale.FRANCE);
+                break;
+            case "en":
+                formatHeureMinute = new SimpleDateFormat("HH:mm", Locale.UK);
+                formatDate = new SimpleDateFormat("EEEE dd MMMM", Locale.UK);
+                break;
+            default:
+                break;
+        }
 
         // récupération des Views de l'affichage
         listView = findViewById(R.id.listView);
@@ -129,30 +151,7 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
         StrictMode.setThreadPolicy(policy);
 
         // récupératation des paramètres stockés dans les sharedPreferences
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean sync_edt = sharedPreferences.getBoolean("sync_edt",false);
-        String langue = sharedPreferences.getString("language", "fr");
-        String url = sharedPreferences.getString("url",null);
-        returnButton = sharedPreferences.getBoolean("return_button", false);
 
-        // si la synchro au démarrage est activée
-        if(sync_edt){
-            // réucpérer le fichier ICS depuis l'url scannée ou saisie
-            downloadCalendar(url);
-        }
-
-        switch (langue){
-            case "fr":
-                formatHeureMinute = new SimpleDateFormat("HH:mm", Locale.FRANCE);
-                formatDate = new SimpleDateFormat("EEEE dd MMMM", Locale.FRANCE);
-                break;
-            case "en":
-                formatHeureMinute = new SimpleDateFormat("HH:mm", Locale.UK);
-                formatDate = new SimpleDateFormat("EEEE dd MMMM", Locale.UK);
-                break;
-            default:
-                break;
-        }
 
         // initialisation de la date du jour
         day = java.util.Calendar.getInstance();
@@ -170,7 +169,7 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
         textView.setText(date_du_jour);
 
         // si le calendrier existe, on l'affiche
-        if(calendar != null){
+        if (calendar != null) {
 
             // récupération de la liste des événement du jour
             ArrayList<VEvent> eventList = this.getDayEvents(date_du_jour, calendar);
@@ -180,8 +179,7 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
 
             // afficher le contenu du celendar
             listView.setAdapter(eventAdapter);
-        }
-        else{
+        } else {
             // TODO: gérer le cas où l'application démarre sans fichier *.ics
         }
 
@@ -190,18 +188,17 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
     // TODO: Peut éventuellement être intégré dans un service
     // méthode de synchro de l'EDT :
     // Télécharge le fichier *.ics depuis l'URL fournie à chaque appel
-    public void downloadCalendar(String _url){
+    public void downloadCalendar(String _url) {
         // récupération du fichier ICS
         File calendar = this.getIcsFile();
         try {
             Response response = new OkHttpClient().newCall(new Request.Builder().url(_url).build()).execute();
-            if(response.isSuccessful() && response.body() != null){
+            if (response.isSuccessful() && response.body() != null) {
                 String fileContent = response.body().string();
                 PrintStream printStream = new PrintStream(calendar);
                 printStream.println(fileContent);
                 printStream.close();
-            }
-            else{
+            } else {
                 // TODO: gérer l'erreur
             }
         } catch (IOException e) {
@@ -210,7 +207,7 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
     }
 
     // métode de récupération du fichier *.ics
-    public File getIcsFile(){
+    public File getIcsFile() {
         String path = Environment.getExternalStorageDirectory().getPath() +
                 "/Download" +
                 "/ADEcal.ics";
@@ -232,15 +229,15 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
 
     // méthode de récupération des activités d'un jour donnée sous forme d'une String respectant le format "EEEE dd MMMM"
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public ArrayList<VEvent> getDayEvents(String date, Calendar calendar){
+    public ArrayList<VEvent> getDayEvents(String date, Calendar calendar) {
         // récupération de la liste des activités
         ComponentList componentList = calendar.getComponents();
         ArrayList<VEvent> eventList = new ArrayList<>();
 
         // ajout des événements de la date du jour dans eventList
-        for(Object component : componentList){
+        for (Object component : componentList) {
             VEvent event = (VEvent) component;
-            if(date.equals(formatDate.format(event.getStartDate().getDate()))){
+            if (date.equals(formatDate.format(event.getStartDate().getDate()))) {
                 eventList.add(event);
             }
         }
@@ -251,7 +248,7 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
             public int compare(VEvent e1, VEvent e2) {
                 Date date1 = e1.getStartDate().getDate();
                 Date date2 = e2.getStartDate().getDate();
-                if(date1.getTime() < date2.getTime()) return -1;
+                if (date1.getTime() < date2.getTime()) return -1;
                 else return 1;
             }
         });
@@ -270,16 +267,15 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
             }
         }
         // click sur le bouton de gauche
-        if(v.getId() == R.id.imageButton_left){
+        if (v.getId() == R.id.imageButton_left) {
 
             // incrémenter la date du jour
             day.add(java.util.Calendar.HOUR, -24);
 
-            if(returnButton){
-                if(save_day.equals(formatDate.format(day.getTime()))){
+            if (returnButton) {
+                if (save_day.equals(formatDate.format(day.getTime()))) {
                     fab.setVisibility(View.INVISIBLE);
-                }
-                else{
+                } else {
                     fab.setVisibility(View.VISIBLE);
                 }
             }
@@ -298,16 +294,15 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
         }
 
         // click sur le bouton de droite
-        if(v.getId() == R.id.imageButton_right){
+        if (v.getId() == R.id.imageButton_right) {
 
             // décrémenter la date du jour
             day.add(java.util.Calendar.HOUR, 24);
 
-            if(returnButton){
-                if(save_day.equals(formatDate.format(day.getTime()))){
+            if (returnButton) {
+                if (save_day.equals(formatDate.format(day.getTime()))) {
                     fab.setVisibility(View.INVISIBLE);
-                }
-                else{
+                } else {
                     fab.setVisibility(View.VISIBLE);
                 }
             }
@@ -326,9 +321,9 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
         }
 
         // click sur le bouton retour
-        if(v.getId() == R.id.button_today){
+        if (v.getId() == R.id.button_today) {
 
-            if(returnButton) fab.setVisibility(View.INVISIBLE);
+            if (returnButton) fab.setVisibility(View.INVISIBLE);
 
             day = java.util.Calendar.getInstance();
             day.add(java.util.Calendar.HOUR, 1);
@@ -345,4 +340,5 @@ public class CalendarViewActivity extends AppCompatActivity implements View.OnCl
             listView.setAdapter(eventAdapter);
         }
 
+    }
 }

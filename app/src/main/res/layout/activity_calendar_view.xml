@@ -48,6 +48,7 @@
 
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
+       android:layout_below="@+id/activity_main_toolbar"
         android:id="@+id/nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,5 +94,24 @@
             app:srcCompat="@drawable/right" />
 
     </LinearLayout>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/nav_bar">
+    </ListView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listView"
+        android:layout_alignEnd="@+id/nav_bar"
+        android:layout_alignBottom="@id/listView"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:backgroundTint="@color/orange"
+        app:srcCompat="@drawable/back_to_today"
+        app:tint="@android:color/white" />
 </RelativeLayout>
