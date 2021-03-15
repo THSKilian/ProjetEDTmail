@@ -1,14 +1,18 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <PreferenceCategory app:title="@string/sync_edt_header"
 
-    <PreferenceCategory app:title="@string/sync_edt_header">
+        >
 
         <!-- USED TO LAUNCH THE QR CODE SCAN -->
         <Preference
             app:key="scan"
             app:title="@string/edt_scan_title"
             app:summary="@string/edt_scan_summary"
-            app:icon="@drawable/scan">
+            app:icon="@drawable/scan"
+
+  >
         </Preference>
 
         <EditTextPreference
@@ -109,7 +113,7 @@
             app:defaultValue="fr"
             app:icon="@drawable/language"  />
 
-        <SwitchPreferenceCompat
+        <SwitchPreference
             app:key="dark_theme"
             app:title="@string/app_theme_title"
             app:summary="@string/app_theme_summary"

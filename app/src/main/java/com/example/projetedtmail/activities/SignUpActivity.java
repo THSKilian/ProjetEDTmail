@@ -1,6 +1,7 @@
 package com.example.projetedtmail.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
 import com.example.projetedtmail.R;
 import com.example.projetedtmail.beans.User;
@@ -40,6 +43,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         userDAO = new UserDAO(this);
         userDAO.open();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean check = sharedPreferences.getBoolean("dark_theme", false);
+        if (check) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            editor.putBoolean("dark_theme", true);
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("dark_theme", false);
+
+        }
     }
 
     public void onClick(View btn) {
